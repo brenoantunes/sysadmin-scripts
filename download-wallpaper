@@ -1,0 +1,12 @@
+# URL do arquivo no Google Drive (link direto para download)
+$url = "https://drive.google.com/uc?export=download&id=1SFDeD0nU986u72jZFr6xsP5GjPJx1-CB"
+
+# Caminho de destino do arquivo
+$outputFile = "C:\teste.png"
+
+# Baixando o arquivo
+try {
+    Invoke-WebRequest -Uri $url -OutFile $outputFile -ErrorAction Stop
+} catch {
+    # Registro silencioso do erro, caso necessário
+}
