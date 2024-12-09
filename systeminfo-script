@@ -1,0 +1,13 @@
+# Obtém informações do sistema
+$SystemInfo = Get-CimInstance -ClassName Win32_ComputerSystem
+$BIOSInfo = Get-CimInstance -ClassName Win32_BIOS
+$ProcessorInfo = Get-CimInstance -ClassName Win32_Processor
+$OSInfo = Get-CimInstance -ClassName Win32_OperatingSystem
+
+# Exibe os dados formatados
+Write-Host "Marca: $($SystemInfo.Manufacturer)"
+Write-Host "Modelo: $($SystemInfo.Model)"
+Write-Host "Número de Série: $($BIOSInfo.SerialNumber)"
+Write-Host "Quantidade de Memória (GB): $([math]::Round($SystemInfo.TotalPhysicalMemory / 1GB, 2))"
+Write-Host "Processador: $($ProcessorInfo.Name)"
+Write-Host "Versão do Windows: $($OSInfo.Caption) $($OSInfo.Version)"
